@@ -51,3 +51,10 @@ randTen seed
   = (r * 10, seed')
     where
       (r, seed') = rand seed
+
+randPair :: Gen (Char, Integer)
+randPair s0
+  = ((c, r), s2)
+    where
+      (c, s1) = randLetter s0
+      (r, s2) = rand s1
