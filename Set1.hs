@@ -58,3 +58,10 @@ randPair s0
     where
       (c, s1) = randLetter s0
       (r, s2) = rand s1
+
+generalPair :: Gen a -> Gen b -> Gen (a, b)
+generalPair gen1 gen2 s0
+  = ((r1, r2), s2)
+    where
+      (r1, s1) = gen1 s0
+      (r2, s2) = gen2 s1
