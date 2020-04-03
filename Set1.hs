@@ -5,7 +5,6 @@ module Set1 where
 
 import MCPrelude
 
--- naive approach
 fiveRands :: [Integer]
 fiveRands
   = [r1, r2, r3, r4, r5]
@@ -22,3 +21,12 @@ randLetter seed
   = (toLetter r, seed')
     where
       (r, seed') = rand seed
+
+randString3 :: String
+randString3
+  = [c1, c2, c3]
+    where
+      s0       = mkSeed 1
+      (c1, s1) = randLetter s0
+      (c2, s2) = randLetter s1
+      (c3, _)  = randLetter s2
