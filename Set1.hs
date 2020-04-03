@@ -5,6 +5,9 @@ module Set1 where
 
 import MCPrelude
 
+type Gen a
+  = Seed -> (a, Seed)
+
 fiveRands :: [Integer]
 fiveRands
   = [r1, r2, r3, r4, r5]
@@ -16,7 +19,7 @@ fiveRands
       (r4, s4) = rand s3
       (r5, _)  = rand s4
 
-randLetter :: Seed -> (Char, Seed)
+randLetter :: Gen Char
 randLetter seed
   = (toLetter r, seed')
     where
