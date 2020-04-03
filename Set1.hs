@@ -33,3 +33,21 @@ randString3
       (c1, s1) = randLetter s0
       (c2, s2) = randLetter s1
       (c3, _)  = randLetter s2
+
+randEven :: Gen Integer
+randEven seed
+  = (r * 2, seed')
+    where
+      (r, seed') = rand seed
+
+randOdd :: Gen Integer
+randOdd seed
+  = (r * 2 + 1, seed')
+    where
+      (r, seed') = rand seed
+
+randTen :: Gen Integer
+randTen seed
+  = (r * 10, seed')
+    where
+      (r, seed') = rand seed
