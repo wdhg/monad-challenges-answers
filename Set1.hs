@@ -52,6 +52,12 @@ randTen seed
     where
       (r, seed') = rand seed
 
+generalA :: (a -> b) -> Gen a -> Gen b
+generalA func gen seed
+  = (func r, seed')
+    where
+      (r, seed') = gen seed
+
 randPair :: Gen (Char, Integer)
 randPair s0
   = ((c, r), s2)
