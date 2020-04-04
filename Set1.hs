@@ -8,6 +8,8 @@ import MCPrelude
 type Gen a
   = Seed -> (a, Seed)
 
+-- ex 1 - 1
+
 fiveRands :: [Integer]
 fiveRands
   = [r1, r2, r3, r4, r5]
@@ -18,6 +20,8 @@ fiveRands
       (r3, s3) = rand s2
       (r4, s4) = rand s3
       (r5, _)  = rand s4
+
+-- ex 1 - 2
 
 randLetter :: Gen Char
 randLetter seed
@@ -33,6 +37,8 @@ randString3
       (c1, s1) = randLetter s0
       (c2, s2) = randLetter s1
       (c3, _)  = randLetter s2
+
+-- ex 1 - 3
 
 randEven :: Gen Integer
 randEven seed
@@ -69,6 +75,8 @@ randOdd'
 randTen' :: Gen Integer
 randTen'
   = generalA (*10) rand
+
+-- ex 1 - 4
 
 randPair :: Gen (Char, Integer)
 randPair s0
