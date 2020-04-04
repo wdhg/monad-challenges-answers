@@ -91,3 +91,10 @@ generalPair gen1 gen2 s0
     where
       (r1, s1) = gen1 s0
       (r2, s2) = gen2 s1
+
+generalB :: (a -> b -> c) -> Gen a -> Gen b -> Gen c
+generalB func gen1 gen2 s0
+  = (func r1 r2, s2)
+    where
+      (r1, s1) = gen1 s0
+      (r2, s2) = gen2 s1
