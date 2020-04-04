@@ -42,9 +42,9 @@ randEven seed
 
 randOdd :: Gen Integer
 randOdd seed
-  = (r * 2 + 1, seed')
+  = (r + 1, seed')
     where
-      (r, seed') = rand seed
+      (r, seed') = randEven seed
 
 randTen :: Gen Integer
 randTen seed
