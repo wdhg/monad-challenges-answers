@@ -98,3 +98,7 @@ generalB func gen1 gen2 s0
     where
       (r1, s1) = gen1 s0
       (r2, s2) = gen2 s1
+
+generalPair2 :: Gen a -> Gen b -> Gen (a, b)
+generalPair2
+  = generalB (,)
