@@ -102,3 +102,14 @@ generalB func gen1 gen2 s0
 generalPair2 :: Gen a -> Gen b -> Gen (a, b)
 generalPair2
   = generalB (,)
+
+-- ex 1 - 5
+
+repRandom :: [Gen a] -> Gen [a]
+repRandom [] seed
+  = ([], seed)
+repRandom (gen : gens) seed
+  = (r : result, seed'')
+    where
+      (r, seed')       = gen seed
+      (result, seed'') = repRandom gens seed'
