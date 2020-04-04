@@ -58,6 +58,18 @@ generalA func gen seed
     where
       (r, seed') = gen seed
 
+randEven' :: Gen Integer
+randEven'
+  = generalA (*2) rand
+
+randOdd' :: Gen Integer
+randOdd'
+  = generalA (+1) randEven'
+
+randTen' :: Gen Integer
+randTen'
+  = generalA (*10) rand
+
 randPair :: Gen (Char, Integer)
 randPair s0
   = ((c, r), s2)
