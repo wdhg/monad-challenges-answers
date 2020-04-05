@@ -9,3 +9,8 @@ data Maybe a
   = Just a
   | Nothing
 
+instance Show a => Show (Maybe a) where
+  show (Just value)
+    = "Just " ++ show value
+  show Nothing
+    = "Nothing"
