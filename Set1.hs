@@ -113,3 +113,11 @@ repRandom (gen : gens) seed
     where
       (r, seed')       = gen seed
       (result, seed'') = repRandom gens seed'
+
+-- ex 1 - 6
+
+genTwo :: Gen a -> (a -> Gen b) -> Gen b
+genTwo gen func seed
+  = func r seed'
+    where
+      (r, seed') = gen seed
