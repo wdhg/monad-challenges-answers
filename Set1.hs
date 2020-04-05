@@ -121,3 +121,7 @@ genTwo gen func seed
   = func r seed'
     where
       (r, seed') = gen seed
+
+mkGen :: a -> Gen a
+mkGen value seed
+  = (value, seed)
