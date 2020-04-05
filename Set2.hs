@@ -14,3 +14,11 @@ instance Show a => Show (Maybe a) where
     = "Just " ++ show value
   show Nothing
     = "Nothing"
+
+instance Eq a => Eq (Maybe a) where
+  (Just x) == (Just y)
+    = x == y
+  Nothing == Nothing
+    = True
+  _ == _
+    = False
