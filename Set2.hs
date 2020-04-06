@@ -66,3 +66,23 @@ minimumMay (x : xs)
   = case minimumMay xs of
       Just y  -> Just $ min x y
       Nothing -> Just x
+
+-- ex 2 - 3
+
+queryGreek :: GreekData -> String -> Maybe Double
+queryGreek greekData key
+  = case lookupMay key greekData of
+      Nothing -> Nothing
+      Just xs ->
+        case headMay xs of
+          Nothing -> Nothing
+          Just h  ->
+            case tailMay xs of
+              Nothing -> Nothing
+              Just t  ->
+                case maximumMay t of
+                  Nothing -> Nothing
+                  Just m  ->
+                    case divMay (fromIntegral h) (fromIntegral m) of
+                      Nothing -> Nothing
+                      Just v  -> Just v
