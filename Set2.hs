@@ -83,6 +83,6 @@ queryGreek greekData key
                 case maximumMay t of
                   Nothing -> Nothing
                   Just m  ->
-                    case divMay (fromIntegral h) (fromIntegral m) of
+                    case divMay (fromIntegral m) (fromIntegral h) of
                       Nothing -> Nothing
                       Just v  -> Just v
