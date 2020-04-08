@@ -86,3 +86,15 @@ queryGreek greekData key
                     case divMay (fromIntegral m) (fromIntegral h) of
                       Nothing -> Nothing
                       Just v  -> Just v
+
+chain :: (a -> Maybe b) -> Maybe a -> Maybe b
+chain _ Nothing
+  = Nothing
+chain func (Just value)
+  = func value
+
+link :: Maybe a -> (a -> Maybe b) -> Maybe b
+link Nothing _
+  = Nothing
+link (Just value) func
+  = func value
