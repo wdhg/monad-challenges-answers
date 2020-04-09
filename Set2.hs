@@ -87,6 +87,8 @@ queryGreek greekData key
                       Nothing -> Nothing
                       Just v  -> Just v
 
+-- ex 2 - 4
+
 chain :: (a -> Maybe b) -> Maybe a -> Maybe b
 chain _ Nothing
   = Nothing
@@ -98,3 +100,10 @@ link Nothing _
   = Nothing
 link (Just value) func
   = func value
+
+queryGreek2 :: GreekData -> String -> Maybe Double
+queryGreek2 greekData key
+  = (lookupMay key greekData) `link` (\xs ->
+      headMay xs `link` (\h ->
+        tailMay xs `link` maximumMay `link` (\m ->
+          divMay (fromIntegral m) (fromIntegral h))))
