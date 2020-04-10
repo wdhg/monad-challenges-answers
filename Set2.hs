@@ -107,3 +107,14 @@ queryGreek2 greekData key
       headMay xs `link` (\h ->
         tailMay xs `link` maximumMay `link` (\m ->
           divMay (fromIntegral m) (fromIntegral h))))
+
+-- ex 2 - 5
+
+addSalaries :: [(String, Integer)] -> String -> String -> Maybe Integer
+addSalaries salaries name1 name2
+  = case lookupMay name1 salaries of
+      Nothing -> Nothing
+      Just x  ->
+        case lookupMay name2 salaries of
+          Nothing -> Nothing
+          Just y  -> Just $ x + y
