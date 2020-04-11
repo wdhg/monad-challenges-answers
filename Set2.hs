@@ -118,3 +118,14 @@ addSalaries salaries name1 name2
         case lookupMay name2 salaries of
           Nothing -> Nothing
           Just y  -> Just $ x + y
+
+yLink :: (a -> b -> c) -> Maybe a -> Maybe b -> Maybe c
+yLink func x y
+  = x `link`
+    (\x' -> Just $ func x') `link`
+    (\func' -> y `link`
+      (\y' -> Just $ func' y'))
+
+addSalaries2 :: [(String, Integer)] -> String -> String -> Maybe Integer
+addSalaries2 salaries name1 name2
+  = yLink (+) (lookupMay name1 salaries) (lookupMay name2 salaries)
