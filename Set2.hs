@@ -133,3 +133,13 @@ addSalaries2 salaries name1 name2
 mkMaybe :: a -> Maybe a
 mkMaybe
   = Just
+
+-- ex 2 - 6
+
+tailProd :: Num a => [a] -> Maybe a
+tailProd []
+  = Nothing
+tailProd [x]
+  = Just 1
+tailProd xs
+  = tailMay xs `link` (mkMaybe . product)
