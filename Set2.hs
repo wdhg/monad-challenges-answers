@@ -143,3 +143,11 @@ tailProd [x]
   = Just 1
 tailProd xs
   = tailMay xs `link` (mkMaybe . product)
+
+tailSum :: Num a => [a] -> Maybe a
+tailSum []
+  = Nothing
+tailSum [x]
+  = Just 0
+tailSum xs
+  = tailMay xs `link` (mkMaybe . sum)
