@@ -151,3 +151,9 @@ tailSum [x]
   = Just 0
 tailSum xs
   = tailMay xs `link` (mkMaybe . sum)
+
+transMaybe :: (a -> b) -> Maybe a -> Maybe b
+transMaybe _ Nothing
+  = Nothing
+transMaybe func (Just x)
+  = func x
