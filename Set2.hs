@@ -156,4 +156,12 @@ transMaybe :: (a -> b) -> Maybe a -> Maybe b
 transMaybe _ Nothing
   = Nothing
 transMaybe func (Just x)
-  = func x
+  = Just $ func x
+
+tailMax :: Ord a => [a] -> Maybe (Maybe a)
+tailMax []
+  = Nothing
+tailMax [x]
+  = Just $ Just x
+tailMax xs
+  = transMaybe maximumMay $ tailMay xs
