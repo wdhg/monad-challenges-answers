@@ -165,3 +165,11 @@ tailMax [x]
   = Just $ Just x
 tailMax xs
   = transMaybe maximumMay $ tailMay xs
+
+tailMin :: Ord a => [a] -> Maybe (Maybe a)
+tailMin []
+  = Nothing
+tailMin [x]
+  = Just $ Just x
+tailMin xs
+  = transMaybe minimumMay $ tailMay xs
