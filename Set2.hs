@@ -173,3 +173,9 @@ tailMin [x]
   = Just $ Just x
 tailMin xs
   = transMaybe minimumMay $ tailMay xs
+
+combine :: Maybe (Maybe a) -> Maybe a
+combine Nothing
+  = Nothing
+combine (Just x)
+  = x
