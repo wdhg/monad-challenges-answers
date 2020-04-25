@@ -20,3 +20,12 @@ allPairs (x:xs) ys
     where
       remaining
         = allPairs xs ys
+
+allCards :: [Int] -> [String] -> [Card]
+allCards [] _
+  = []
+allCards (x:xs) ys
+  = map (Card x) ys ++ remaining
+    where
+      remaining
+        = allCards xs ys
