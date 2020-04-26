@@ -29,3 +29,9 @@ allCards (x:xs) ys
     where
       remaining
         = allCards xs ys
+
+allCombs :: (a -> b -> c) -> [a] -> [b] -> [c]
+allCombs _ [] _
+  = []
+allCombs func (x:xs) ys
+  = map (func x) ys ++ allCombs func xs ys
