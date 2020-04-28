@@ -39,3 +39,9 @@ allCombs func (x:xs) ys
 allCombs3 :: (a -> b -> c -> d) -> [a] -> [b] -> [c] -> [d]
 allCombs3 func xs ys zs
   = concatMap (\f -> map f zs) $ concatMap (\f -> map f ys) $ map func xs
+
+combStep :: [a -> b] -> [a] -> [b]
+combStep _ []
+  = []
+combStep funcs (x:xs)
+  = map (\f -> f x) funcs ++ combStep funcs xs
