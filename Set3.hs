@@ -45,3 +45,7 @@ combStep _ []
   = []
 combStep funcs (x:xs)
   = map (\f -> f x) funcs ++ combStep funcs xs
+
+allCombs' :: (a -> b -> c) -> [a] -> [b] -> [c]
+allCombs' func xs ys
+  = combStep (map func xs) ys
