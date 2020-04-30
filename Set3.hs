@@ -49,3 +49,7 @@ combStep funcs (x:xs)
 allCombs' :: (a -> b -> c) -> [a] -> [b] -> [c]
 allCombs' func xs ys
   = combStep (map func xs) ys
+
+allCombs3' :: (a -> b -> c -> d) -> [a] -> [b] -> [c] -> [d]
+allCombs3' func xs ys zs
+  = combStep (combStep (map func xs) ys) zs
