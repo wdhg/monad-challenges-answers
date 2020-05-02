@@ -125,3 +125,9 @@ genTwo gen func seed
 mkGen :: a -> Gen a
 mkGen value seed
   = (value, seed)
+
+-- ex 4 - 2
+
+generalB2 :: (a -> b -> c) -> Gen a -> Gen b -> Gen c
+generalB2 func gen1 gen2
+  = gen1 `genTwo` (\x -> gen2 `genTwo` (\y -> mkGen $ func x y))
