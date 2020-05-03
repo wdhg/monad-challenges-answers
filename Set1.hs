@@ -131,3 +131,9 @@ mkGen value seed
 generalB2 :: (a -> b -> c) -> Gen a -> Gen b -> Gen c
 generalB2 func gen1 gen2
   = gen1 `genTwo` (\x -> gen2 `genTwo` (\y -> mkGen $ func x y))
+
+repRandom' :: [Gen a] -> Gen [a]
+repRandom' []
+  = mkGen []
+repRandom' (gen:gens)
+  = gen `genTwo` (\x -> generalA (x:) $ repRandom' gens)
