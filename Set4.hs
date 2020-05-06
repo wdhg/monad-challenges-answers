@@ -14,3 +14,7 @@ newtype Gen a
   = Gen
   { runGen :: Seed -> (a, Seed)
   }
+
+evalGen :: Gen a -> Seed -> a
+evalGen (Gen runGen)
+  = fst . runGen
