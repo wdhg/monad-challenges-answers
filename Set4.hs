@@ -18,3 +18,11 @@ newtype Gen a
 evalGen :: Gen a -> Seed -> a
 evalGen (Gen runGen)
   = fst . runGen
+
+instance Monad Gen where
+  bind gen func
+    = Gen (\seed ->
+      let (x, s') = runGen gen seed in
+          runGen (func x) s')
+  return x
+    = Gen $ \s -> (x, s)
