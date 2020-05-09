@@ -26,3 +26,11 @@ instance Monad Gen where
           runGen (func x) s')
   return x
     = Gen $ \s -> (x, s)
+
+instance Monad Maybe where
+  bind Nothing _
+    = Nothing
+  bind (Just x) func
+    = func x
+  return
+    = Just
